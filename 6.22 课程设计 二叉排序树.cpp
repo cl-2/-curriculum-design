@@ -1,215 +1,13 @@
-//²âÊÔÊı¾İ£º
+//æµ‹è¯•æ•°æ®ï¼š
 //6
 //4 7 9 3 5 6 
-//´òÓ¡  ÖĞĞò±éÀú 3 4 5 6 7 9 
-//#include<iostream>
-//#include<algorithm>
-//#include<cstdio>
-//#include<cassert>
-//using namespace std;
-//#define maxn 100010
-//int a[maxn];
-//typedef struct Node{
-//	int data;
-//	struct Node *lc;
-//	struct Node *rc;
-//}Tr;
-//typedef Tr *Tree;
-//Tree rt;
-//Tree Y=NULL;
-//Tree qq=NULL;
-//
-//Tree Find(Tree rt,int val){
-//	if(!rt) return 0;
-//	else{
-//	if(rt->data==val)
-//	return rt;
-//	else if(val<rt->data)
-//	Find(rt->lc,val);
-//	else if(val>rt->data)
-//	Find(rt->rc,val);
-//    }
-//}
-//
-//
-//void insert(Tree &rt,int val){
-//	if(!rt){
-//		rt=(Tree)malloc(sizeof(Tr));
-//		rt->data=val; 
-//		rt->lc=rt->rc=NULL;
-//		return;
-//		}
-//	if(val==rt->data) {cout<<"²åÈëÊ§°Ü"; return;}
-//	else if(val<rt->data) {
-//	insert(rt->lc,val);}//cout<<rt->data;}
-//	else {//cout<<rt->data;
-//	insert(rt->rc,val); }
-//}
-//
-//Tree Bin_build(int a[],int k){
-//	Tree rt=NULL;
-//	for(int i=0;i<k;i++)
-//	insert(rt,a[i]);
-//	return rt;
-//}
-//
-//bool del(Tree rt,int val,Tree key){
-//	if(!rt) {cout<<"´ËµãÎª¿Õ";return false;}
-//	
-//	else if(Find(rt,val)){ 
-//	    if(rt->data==val) Y=rt;//YÊÇ¼ÇÂ¼HµÄË«Ç×½ÚµãµÄÎ»ÖÃ 
-//        else
-//		while(val!=rt->data){
-//        	Y=rt;
-//        	if(val<rt->data)
-//        	rt=rt->lc;
-//        	else rt=rt->rc;
-//		}
-//		
-//	    Tree H=rt;
-//		
-//		if(rt->rc==NULL&&rt->lc==NULL)
-//		{
-//		if(Y->data<val) Y->rc=NULL;
-//		else if(Y->data>val) Y->lc=NULL;
-//		
-//		free(rt);return true;}//´ıÉ¾³ı½áµãÎŞ×óÓÒ×ÓÊ÷ 
-//	
-//	
-//	
-//		else if(rt->lc!=NULL&&rt->rc!=NULL){//´ıÉ¾³ı×ÓÊ÷×óÓÒ×ÓÊ÷¶¼ÓĞ 
-//	    //Tree p=rt;
-//	    
-//		Tree I,U=rt;//UÊÇ´ıÉ¾³ı½áµãµÄÖĞĞò±éÀúÏÂµÄÇ°ÇıµÄÇ°Çı  
-//		//cout<<"-"<<key->data;cout<<rt->data;
-//		while(rt->data!=key->data){//´ıÉ¾³ı½áµãµÄÎ»ÖÃ 
-//				I=rt; 
-//				if(rt->lc!=NULL) rt=rt->lc;
-//				else {
-//					rt=I;rt=rt->rc;}
-//		}
-//		//cout<<"-"<<I->data;cout<<"-"<<Y->data;cout<<U->data;//5  6 7
-//		if(key->data<I->data) I->lc=NULL;
-//		else if(key->data>I->data) I->rc=NULL;
-//		U->data =key->data ;
-//		free(key);
-//		return true;
-//
-//
-//
-//        
-//	}
-//		else {//´ıÉ¾³ı×ÓÊ÷½öÓĞÒ»¸ö×ÓÊ÷ 
-//		if(H->lc==NULL&&H->rc!=NULL){
-//		
-//		if(H->data<Y->data)
-//		{Y->lc=H->rc;H=H->rc;}
-//		else if(H->data>Y->data)
-//		while(H->rc!=NULL)
-//		{Y->rc=H->rc;H=H->rc;Y=Y->rc;}//7 9
-//		//cout<<H->data;cout<<"--"<<Y->data;//19 7    99  9
-//		free(H->rc);return true;
-//		} 
-//		
-//		else if(H->rc==NULL&&H->lc!=NULL){
-//		
-//		if(H->data>Y->data)
-//		{Y->rc=H->lc;H=H->lc;}
-//		else if(H->data<Y->data)
-//		while(H->lc!=NULL)
-//		{Y->lc=H->lc;H=H->lc;Y=Y->lc;}
-//		free(H->lc);return true;
-//		}		
-//		
-//		}
-//	}
-//	else cout<<"Ã»ÓĞ´ËÖµ¿ÉÉ¾³ı"<<endl; 
-//}
-//
-//void zxbl(Tree &rt){//Ê÷µÄÖĞĞò±éÀú 
-//	if(rt){//cout<<"hello";
-//		zxbl(rt->lc);
-//		cout<<rt->data<<' ';
-//		zxbl(rt->rc);
-//	}
-//}
-//
-//Tree zxbl_fdg(Tree &rt,int val){
-//	Tree q;
-//        int top,b;
-//        Tree arr[maxn];
-//        top=0; q=rt; b=0;
-//        while(b!=1){
-//        	if(q!=NULL){
-//        		top++;
-//        		if(top>maxn){
-//        			b=1;
-//				}
-//				else {arr[top]=q;
-//				q=q->lc;}}
-//        	else if(!top) b=1;
-//        	else{
-//				q=arr[top];
-//				if(val==q->data){
-//        		//qq=u;
-//				return arr[top+1];//ÇóÉ¾³ı½áµãÊ±×óÓÒ×ÓÊ÷¶¼´æÔÚÇé¿öÏÂµÄÌæ»»Ô­½áµãµÄÖµ£¨ÖĞĞò±éÀúÏÂ ´ıÉ¾³ı½áµãµÄÇ°Çı£© 
-//				}
-//				top--;
-//        		
-//        	//	cout<<"wdt"<<q->data<<"wu";
-//				q=q->rc;
-//			}
-//		}
-//}
-//int main()
-//{
-//	int n;
-//	cout<<"ÇëÊäÈëÊı¾İÊıÁ¿"<<endl; 
-//	cin>>n;
-//	cout<<"ÊäÈëËùÓĞÊı¾İ"<<endl;
-//	for(int i=0;i<n;i++)
-//	cin>>a[i];
-//	cout<<"¶ş²æÊ÷Îª£º"<<endl; 
-//	rt=Bin_build(a,n);
-//	//zxbl(Bin_build(a,n));
-//	zxbl(rt);
-//	cout<<endl; 
-//	cout<<"ÇëÑ¡Ôñ£º"<<endl;
-//	cout<<"1.²éÕÒ"<<endl;
-//	cout<<"2.²åÈë"<<endl;
-//	cout<<"3.É¾³ı"<<endl;
-//	int t,val;
-//	while(cin>>t){
-//	if(t==1){
-//	    cout<<"ÇëÊäÈë²éÕÒµÄÊı"<<endl;
-//	    cin>>val;
-//	    if(Find(rt,val)) cout<<"²éÕÒ³É¹¦"<<endl;
-//	    else cout<<"²éÕÒÊ§°Ü"<<endl;
-//	}
-//	
-//	else if(t==2){
-//		cout<<"ÇëÊäÈë²åÈëµÄÖµ"<<endl;
-//		cin>>val;
-//		insert(rt,val);
-//        zxbl(rt);
-//		cout<<endl;
-//		}
-//
-//	else if(t==3){
-//		cout<<"ÇëÊäÈëÄãÒªÉ¾³ıµÄÖµ"<<endl;
-//		cin>>val;
-//		Tree key=zxbl_fdg(rt,val);
-//		if(del(rt,val,key))
-//		cout<<"É¾³ı³É¹¦"<<endl;
-//		//cout<<"?"<<rt->rc->data;
-//		zxbl(rt);
-//		cout<<endl; 
-//	}
-//	else cout<<"ÇëÊäÈëÕıÈ·µÄÖµ";} 
-//}
+// æ‰“å°  ä¸­åºéå† 3 4 5 6 7 9
+
 #include<iostream>
-#include<stdio.h>
-#include<stdlib.h>
+#include<algorithm>
+#include<cstdio>
+#include<cassert>
+using namespace std;
 #define maxn 100010
 int a[maxn];
 typedef struct Node{
@@ -231,7 +29,7 @@ Tree Find(Tree rt,int val){
 	Find(rt->lc,val);
 	else if(val>rt->data)
 	Find(rt->rc,val);
-    }
+   }
 }
 
 
@@ -242,10 +40,10 @@ void insert(Tree &rt,int val){
 		rt->lc=rt->rc=NULL;
 		return;
 		}
-	if(val==rt->data) {printf("²åÈëÊ§°Ü\n"); return;}
+	if(val==rt->data) {cout<<"æ’å…¥å¤±è´¥"; return;}
 	else if(val<rt->data) {
-	insert(rt->lc,val);}
-	else {
+	insert(rt->lc,val);}//cout<<rt->data;}
+	else {//cout<<rt->data;
 	insert(rt->rc,val); }
 }
 
@@ -257,16 +55,16 @@ Tree Bin_build(int a[],int k){
 }
 
 bool del(Tree rt,int val,Tree key){
-	if(!rt) {printf("´ËµãÎª¿Õ\n");return false;}
+	if(!rt) {cout<<"æ­¤ç‚¹ä¸ºç©º";return false;}
 	
 	else if(Find(rt,val)){ 
-	    if(rt->data==val) Y=rt;//YÊÇ¼ÇÂ¼HµÄË«Ç×½ÚµãµÄÎ»ÖÃ 
-        else
+	    if(rt->data==val) Y=rt;//Yæ˜¯è®°å½•Hçš„åŒäº²èŠ‚ç‚¹çš„ä½ç½® 
+       else
 		while(val!=rt->data){
-        	Y=rt;
-        	if(val<rt->data)
-        	rt=rt->lc;
-        	else rt=rt->rc;
+       	Y=rt;
+       	if(val<rt->data)
+       	rt=rt->lc;
+       	else rt=rt->rc;
 		}
 		
 	    Tree H=rt;
@@ -276,16 +74,16 @@ bool del(Tree rt,int val,Tree key){
 		if(Y->data<val) Y->rc=NULL;
 		else if(Y->data>val) Y->lc=NULL;
 		
-		free(rt);return true;}//´ıÉ¾³ı½áµãÎŞ×óÓÒ×ÓÊ÷ 
+		free(rt);return true;}//å¾…åˆ é™¤ç»“ç‚¹æ— å·¦å³å­æ ‘ 
 	
 	
 	
-		else if(rt->lc!=NULL&&rt->rc!=NULL){//´ıÉ¾³ı×ÓÊ÷×óÓÒ×ÓÊ÷¶¼ÓĞ 
+		else if(rt->lc!=NULL&&rt->rc!=NULL){//å¾…åˆ é™¤å­æ ‘å·¦å³å­æ ‘éƒ½æœ‰ 
 	    //Tree p=rt;
 	    
-		Tree I,U=rt;//UÊÇ´ıÉ¾³ı½áµãµÄÖĞĞò±éÀúÏÂµÄÇ°ÇıµÄÇ°Çı  
+		Tree I,U=rt;//Uæ˜¯å¾…åˆ é™¤ç»“ç‚¹çš„ä¸­åºéå†ä¸‹çš„å‰é©±çš„å‰é©±  
 		//cout<<"-"<<key->data;cout<<rt->data;
-		while(rt->data!=key->data){//´ıÉ¾³ı½áµãµÄÎ»ÖÃ 
+		while(rt->data!=key->data){//å¾…åˆ é™¤ç»“ç‚¹çš„ä½ç½® 
 				I=rt; 
 				if(rt->lc!=NULL) rt=rt->lc;
 				else {
@@ -300,21 +98,22 @@ bool del(Tree rt,int val,Tree key){
 
 
 
-        
+       
 	}
-		else {
+		else {//å¾…åˆ é™¤å­æ ‘ä»…æœ‰ä¸€ä¸ªå­æ ‘ 
 		if(H->lc==NULL&&H->rc!=NULL){
-		if(H->data==Y->data) {rt=H->rc;H=NULL;free(Y);}
+		
 		if(H->data<Y->data)
 		{Y->lc=H->rc;H=H->rc;}
 		else if(H->data>Y->data)
-		while(H->rc!=NULL&&H->data!=Y->data)
-		{Y->rc=H->rc;H=H->rc;Y=Y->rc;}
+		while(H->rc!=NULL)
+		{Y->rc=H->rc;H=H->rc;Y=Y->rc;}//7 9
+		//cout<<H->data;cout<<"--"<<Y->data;//19 7    99  9
 		free(H->rc);return true;
 		} 
 		
 		else if(H->rc==NULL&&H->lc!=NULL){
-		if(H->data==Y->data) {rt=Y->lc;free(Y);}
+		
 		if(H->data>Y->data)
 		{Y->rc=H->lc;H=H->lc;}
 		else if(H->data<Y->data)
@@ -325,37 +124,40 @@ bool del(Tree rt,int val,Tree key){
 		
 		}
 	}
-	else {printf("Ã»ÓĞ´ËÖµ¿ÉÉ¾³ı\n");return false;} 
+	else cout<<"æ²¡æœ‰æ­¤å€¼å¯åˆ é™¤"<<endl; 
 }
 
-void zxbl(Tree &rt){//Ê÷µÄÖĞĞò±éÀú 
-	if(rt){
+void zxbl(Tree &rt){//æ ‘çš„ä¸­åºéå† 
+	if(rt){//cout<<"hello";
 		zxbl(rt->lc);
-		printf("%d ",rt->data);
+		cout<<rt->data<<' ';
 		zxbl(rt->rc);
 	}
 }
 
 Tree zxbl_fdg(Tree &rt,int val){
 	Tree q;
-        int top,b;
-        Tree arr[maxn];
-        top=0; q=rt; b=0;
-        while(b!=1){
-        	if(q!=NULL){
-        		top++;
-        		if(top>maxn){
-        			b=1;
+       int top,b;
+       Tree arr[maxn];
+       top=0; q=rt; b=0;
+       while(b!=1){
+       	if(q!=NULL){
+       		top++;
+       		if(top>maxn){
+       			b=1;
 				}
 				else {arr[top]=q;
 				q=q->lc;}}
-        	else if(!top) b=1;
-        	else{
+       	else if(!top) b=1;
+       	else{
 				q=arr[top];
 				if(val==q->data){
-				return arr[top+1];//ÇóÉ¾³ı½áµãÊ±×óÓÒ×ÓÊ÷¶¼´æÔÚÇé¿öÏÂµÄÌæ»»Ô­½áµãµÄÖµ£¨ÖĞĞò±éÀúÏÂ ´ıÉ¾³ı½áµãµÄÇ°Çı£© 
+       		//qq=u;
+				return arr[top+1];//æ±‚åˆ é™¤ç»“ç‚¹æ—¶å·¦å³å­æ ‘éƒ½å­˜åœ¨æƒ…å†µä¸‹çš„æ›¿æ¢åŸç»“ç‚¹çš„å€¼ï¼ˆä¸­åºéå†ä¸‹ å¾…åˆ é™¤ç»“ç‚¹çš„å‰é©±ï¼‰ 
 				}
 				top--;
+       		
+       	//	cout<<"wdt"<<q->data<<"wu";
 				q=q->rc;
 			}
 		}
@@ -363,48 +165,249 @@ Tree zxbl_fdg(Tree &rt,int val){
 int main()
 {
 	int n;
-	printf("ÇëÊäÈëÊı¾İÊıÁ¿\n"); 
-	scanf("%d",&n);
-	printf("ÇëÊäÈëËùÓĞÊı¾İ\n");
+	cout<<"è¯·è¾“å…¥æ•°æ®æ•°é‡"<<endl; 
+	cin>>n;
+	cout<<"è¾“å…¥æ‰€æœ‰æ•°æ®"<<endl;
 	for(int i=0;i<n;i++)
-	scanf("%d",&a[i]);
-	printf("¶ş²æÊ÷Îª£º\n"); 
+	cin>>a[i];
+	cout<<"äºŒå‰æ ‘ä¸ºï¼š"<<endl; 
 	rt=Bin_build(a,n);
+	//zxbl(Bin_build(a,n));
 	zxbl(rt);
-	printf("\n");
-	printf("1.²éÕÒ\n");
-	printf("2.²åÈë\n");
-	printf("3.É¾³ı\n");
-	printf("0.ÍË³ö\n");
+	cout<<endl; 
+	cout<<"è¯·é€‰æ‹©ï¼š"<<endl;
+	cout<<"1.æŸ¥æ‰¾"<<endl;
+	cout<<"2.æ’å…¥"<<endl;
+	cout<<"3.åˆ é™¤"<<endl;
 	int t,val;
-	while(scanf("%d",&t)){
-	if(t==0) break;
+	while(cin>>t){
 	if(t==1){
-	    printf("ÇëÊäÈë²éÕÒµÄÊı\n");
-	    scanf("%d",&val);
-	    if(Find(rt,val)) printf("²éÕÒ³É¹¦\n");
-	    else printf("²éÕÒÊ§°Ü\n");
+	    cout<<"è¯·è¾“å…¥æŸ¥æ‰¾çš„æ•°"<<endl;
+	    cin>>val;
+	    if(Find(rt,val)) cout<<"æŸ¥æ‰¾æˆåŠŸ"<<endl;
+	    else cout<<"æŸ¥æ‰¾å¤±è´¥"<<endl;
 	}
 	
 	else if(t==2){
-		printf("ÇëÊäÈë²åÈëµÄÖµ\n"); 
-		scanf("%d",&val);
+		cout<<"è¯·è¾“å…¥æ’å…¥çš„å€¼"<<endl;
+		cin>>val;
 		insert(rt,val);
-        zxbl(rt);
-		printf("\n");
+       zxbl(rt);
+		cout<<endl;
 		}
 
 	else if(t==3){
-		printf("ÇëÊäÈëÄãÒªÉ¾³ıµÄÖµ\n");
-		scanf("%d",&val);
+		cout<<"è¯·è¾“å…¥ä½ è¦åˆ é™¤çš„å€¼"<<endl;
+		cin>>val;
 		Tree key=zxbl_fdg(rt,val);
 		if(del(rt,val,key))
-		printf("É¾³ı³É¹¦\n");
+		cout<<"åˆ é™¤æˆåŠŸ"<<endl;
+		//cout<<"?"<<rt->rc->data;
 		zxbl(rt);
-		printf("\n");
+		cout<<endl; 
 	}
-	else printf("ÇëÊäÈëÕıÈ·µÄÖµ");
-	} 
+	else cout<<"è¯·è¾“å…¥æ­£ç¡®çš„å€¼";} 
 }
+
+c:
+// #include<iostream>
+// #include<stdio.h>
+// #include<stdlib.h>
+// #define maxn 100010
+// int a[maxn];
+// typedef struct Node{
+// 	int data;
+// 	struct Node *lc;
+// 	struct Node *rc;
+// }Tr;
+// typedef Tr *Tree;
+// Tree rt;
+// Tree Y=NULL;
+// Tree qq=NULL;
+
+// Tree Find(Tree rt,int val){
+// 	if(!rt) return 0;
+// 	else{
+// 	if(rt->data==val)
+// 	return rt;
+// 	else if(val<rt->data)
+// 	Find(rt->lc,val);
+// 	else if(val>rt->data)
+// 	Find(rt->rc,val);
+//     }
+// }
+
+
+// void insert(Tree &rt,int val){
+// 	if(!rt){
+// 		rt=(Tree)malloc(sizeof(Tr));
+// 		rt->data=val; 
+// 		rt->lc=rt->rc=NULL;
+// 		return;
+// 		}
+// 	if(val==rt->data) {printf("æ’å…¥å¤±è´¥\n"); return;}
+// 	else if(val<rt->data) {
+// 	insert(rt->lc,val);}
+// 	else {
+// 	insert(rt->rc,val); }
+// }
+
+// Tree Bin_build(int a[],int k){
+// 	Tree rt=NULL;
+// 	for(int i=0;i<k;i++)
+// 	insert(rt,a[i]);
+// 	return rt;
+// }
+
+// bool del(Tree rt,int val,Tree key){
+// 	if(!rt) {printf("æ­¤ç‚¹ä¸ºç©º\n");return false;}
+	
+// 	else if(Find(rt,val)){ 
+// 	    if(rt->data==val) Y=rt;//Yæ˜¯è®°å½•Hçš„åŒäº²èŠ‚ç‚¹çš„ä½ç½® 
+//         else
+// 		while(val!=rt->data){
+//         	Y=rt;
+//         	if(val<rt->data)
+//         	rt=rt->lc;
+//         	else rt=rt->rc;
+// 		}
+		
+// 	    Tree H=rt;
+		
+// 		if(rt->rc==NULL&&rt->lc==NULL)
+// 		{
+// 		if(Y->data<val) Y->rc=NULL;
+// 		else if(Y->data>val) Y->lc=NULL;
+		
+// 		free(rt);return true;}//å¾…åˆ é™¤ç»“ç‚¹æ— å·¦å³å­æ ‘ 
+	
+	
+	
+// 		else if(rt->lc!=NULL&&rt->rc!=NULL){//å¾…åˆ é™¤å­æ ‘å·¦å³å­æ ‘éƒ½æœ‰ 
+// 	    //Tree p=rt;
+	    
+// 		Tree I,U=rt;//Uæ˜¯å¾…åˆ é™¤ç»“ç‚¹çš„ä¸­åºéå†ä¸‹çš„å‰é©±çš„å‰é©±  
+// 		//cout<<"-"<<key->data;cout<<rt->data;
+// 		while(rt->data!=key->data){//å¾…åˆ é™¤ç»“ç‚¹çš„ä½ç½® 
+// 				I=rt; 
+// 				if(rt->lc!=NULL) rt=rt->lc;
+// 				else {
+// 					rt=I;rt=rt->rc;}
+// 		}
+// 		//cout<<"-"<<I->data;cout<<"-"<<Y->data;cout<<U->data;//5  6 7
+// 		if(key->data<I->data) I->lc=NULL;
+// 		else if(key->data>I->data) I->rc=NULL;
+// 		U->data =key->data ;
+// 		free(key);
+// 		return true;
+
+
+
+        
+// 	}
+// 		else {
+// 		if(H->lc==NULL&&H->rc!=NULL){
+// 		if(H->data==Y->data) {rt=H->rc;H=NULL;free(Y);}
+// 		if(H->data<Y->data)
+// 		{Y->lc=H->rc;H=H->rc;}
+// 		else if(H->data>Y->data)
+// 		while(H->rc!=NULL&&H->data!=Y->data)
+// 		{Y->rc=H->rc;H=H->rc;Y=Y->rc;}
+// 		free(H->rc);return true;
+// 		} 
+		
+// 		else if(H->rc==NULL&&H->lc!=NULL){
+// 		if(H->data==Y->data) {rt=Y->lc;free(Y);}
+// 		if(H->data>Y->data)
+// 		{Y->rc=H->lc;H=H->lc;}
+// 		else if(H->data<Y->data)
+// 		while(H->lc!=NULL)
+// 		{Y->lc=H->lc;H=H->lc;Y=Y->lc;}
+// 		free(H->lc);return true;
+// 		}		
+		
+// 		}
+// 	}
+// 	else {printf("æ²¡æœ‰æ­¤å€¼å¯åˆ é™¤\n");return false;} 
+// }
+
+// void zxbl(Tree &rt){//æ ‘çš„ä¸­åºéå† 
+// 	if(rt){
+// 		zxbl(rt->lc);
+// 		printf("%d ",rt->data);
+// 		zxbl(rt->rc);
+// 	}
+// }
+
+// Tree zxbl_fdg(Tree &rt,int val){
+// 	Tree q;
+//         int top,b;
+//         Tree arr[maxn];
+//         top=0; q=rt; b=0;
+//         while(b!=1){
+//         	if(q!=NULL){
+//         		top++;
+//         		if(top>maxn){
+//         			b=1;
+// 				}
+// 				else {arr[top]=q;
+// 				q=q->lc;}}
+//         	else if(!top) b=1;
+//         	else{
+// 				q=arr[top];
+// 				if(val==q->data){
+// 				return arr[top+1];//æ±‚åˆ é™¤ç»“ç‚¹æ—¶å·¦å³å­æ ‘éƒ½å­˜åœ¨æƒ…å†µä¸‹çš„æ›¿æ¢åŸç»“ç‚¹çš„å€¼ï¼ˆä¸­åºéå†ä¸‹ å¾…åˆ é™¤ç»“ç‚¹çš„å‰é©±ï¼‰ 
+// 				}
+// 				top--;
+// 				q=q->rc;
+// 			}
+// 		}
+// }
+// int main()
+// {
+// 	int n;
+// 	printf("è¯·è¾“å…¥æ•°æ®æ•°é‡\n"); 
+// 	scanf("%d",&n);
+// 	printf("è¯·è¾“å…¥æ‰€æœ‰æ•°æ®\n");
+// 	for(int i=0;i<n;i++)
+// 	scanf("%d",&a[i]);
+// 	printf("äºŒå‰æ ‘ä¸ºï¼š\n"); 
+// 	rt=Bin_build(a,n);
+// 	zxbl(rt);
+// 	printf("\n");
+// 	printf("1.æŸ¥æ‰¾\n");
+// 	printf("2.æ’å…¥\n");
+// 	printf("3.åˆ é™¤\n");
+// 	printf("0.é€€å‡º\n");
+// 	int t,val;
+// 	while(scanf("%d",&t)){
+// 	if(t==0) break;
+// 	if(t==1){
+// 	    printf("è¯·è¾“å…¥æŸ¥æ‰¾çš„æ•°\n");
+// 	    scanf("%d",&val);
+// 	    if(Find(rt,val)) printf("æŸ¥æ‰¾æˆåŠŸ\n");
+// 	    else printf("æŸ¥æ‰¾å¤±è´¥\n");
+// 	}
+	
+// 	else if(t==2){
+// 		printf("è¯·è¾“å…¥æ’å…¥çš„å€¼\n"); 
+// 		scanf("%d",&val);
+// 		insert(rt,val);
+//         zxbl(rt);
+// 		printf("\n");
+// 		}
+
+// 	else if(t==3){
+// 		printf("è¯·è¾“å…¥ä½ è¦åˆ é™¤çš„å€¼\n");
+// 		scanf("%d",&val);
+// 		Tree key=zxbl_fdg(rt,val);
+// 		if(del(rt,val,key))
+// 		printf("åˆ é™¤æˆåŠŸ\n");
+// 		zxbl(rt);
+// 		printf("\n");
+// 	}
+// 	else printf("è¯·è¾“å…¥æ­£ç¡®çš„å€¼");
+// 	} 
+// }
 
 
